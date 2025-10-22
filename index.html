@@ -230,5 +230,26 @@
         >
       </nav>
     </footer>
+    <script>
+      // List of events that indicate user activity
+      const activityEvents = [
+        "click",
+        "mousemove",
+        "keypress",
+        "scroll",
+        "touchstart",
+      ];
+
+      // Function to notify parent app
+      function notifyParentUserActive() {
+        window.parent.postMessage({ type: "user-active" }, "*");
+        console.log("User activity detected and notified to parent.");
+      }
+
+      // Attach event listeners to the whole document
+      activityEvents.forEach((event) => {
+        document.addEventListener(event, notifyParentUserActive);
+      });
+    </script>
   </body>
 </html>
